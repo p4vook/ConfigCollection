@@ -1,7 +1,7 @@
 mkdir -p ~/Git
 mkdir -p ~/.vim/pack/git-plugins/start
 cd ~/Git
-git clone https://github.com/pavel-the-best/ConfigCollections.git
+git clone https://github.com/pavel-the-best/ConfigCollection.git
 git clone https://github.com/petobens/trueline
 git clone https://github.com/vim/vim
 git clone https://github.com/MidnightCommander/mc
@@ -12,9 +12,9 @@ cd vim
 ./configure --enable-pythoninterp --enable-python3interp --enable-luainterp --enable-perlinterp --enable-terminal --enable-multibyte --with-features=huge --enable-gui=no CC=clang
 make -j$(nproc)
 sudo make install
-cd ~/Git/ConfigCollections
+cd ~/Git/ConfigCollection
 cp .vimrc ~/.vimrc
-cp .bashrc ~/.bashrc
+cat .bashrc >> ~/.bashrc
 cd ~/Git/mc
 ./autogen.sh
 ./configure --enable-charset --with-screen=ncurses CC=clang
