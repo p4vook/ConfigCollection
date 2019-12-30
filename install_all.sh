@@ -17,6 +17,6 @@ cp .vimrc ~/.vimrc
 cp .bashrc ~/.bashrc
 cd ~/Git/mc
 ./autogen.sh
-./configure --enable-charset --with-screen=slang CC=clang
+./configure --enable-charset --with-screen=ncurses CC=clang
 make -j$(nproc)
 sudo make install
