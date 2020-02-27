@@ -5,9 +5,6 @@ set backspace=indent,eol,start
 set nocompatible
 set bs=2
 set ruler
-set background=dark
-
-colorscheme gruvbox
 
 set wildmenu
 set showcmd
@@ -48,14 +45,37 @@ set laststatus=2
 set nowrap
 set history=10000
 
-let g:clang_format#command = 'clang-format'
-let g:clang_format#style_options = {
-            \ "BasedOnStyle": "Google",
-            \ "UseTab" : "Never",
-            \ "IndentWidth" : 4,
-            \ "ColumnLimit" : 100,
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "false",
-            \ "AllowShortFunctionsOnASingleLine" : "false",
-            \}
+function Compile()
+    let res = expand('%:t:r') . '.o'
+    if expand('%:e') ==? 'cpp'
+        exec "!clang++ -DLOCAL -Wextra -fsanitize=undefined % -o " . res
+    elseif expand('%:e') ==? 'c'
+        exec "!clang -DLOCAL -Wextra -fsanitize=undefined,array-bounds % -o " . res
+    endif
+endfunction
 
+function Run()
+    let name = expand('%:t:r') . '.o'
+    if filereadable(name)
+        exec "!./" . name
+    elseif expand('%:e') ==? 'py'
+        !python3 %
+    endif
+endfunction
+
+noremap <f1> :call Compile()<CR>
+noremap <f2> :call Run()<CR>
+
+""let g:clang_format#command = 'clang-format'
+""let g:clang_format#style_options = {
+""            \ "BasedOnStyle": "Google",
+""            \ "UseTab" : "Never",
+""            \ "IndentWidth" : 4,
+""            \ "ColumnLimit" : 100,
+""            \ "AccessModifierOffset" : -4,
+""            \ "AllowShortIfStatementsOnASingleLine" : "false",
+""            \ "AllowShortFunctionsOnASingleLine" : "false",
+""            \}
+""
+
+colorscheme default
