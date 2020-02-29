@@ -66,16 +66,15 @@ endfunction
 noremap <f1> :call Compile()<CR>
 noremap <f2> :call Run()<CR>
 
-""let g:clang_format#command = 'clang-format'
-""let g:clang_format#style_options = {
-""            \ "BasedOnStyle": "Google",
-""            \ "UseTab" : "Never",
-""            \ "IndentWidth" : 4,
-""            \ "ColumnLimit" : 100,
-""            \ "AccessModifierOffset" : -4,
-""            \ "AllowShortIfStatementsOnASingleLine" : "false",
-""            \ "AllowShortFunctionsOnASingleLine" : "false",
-""            \}
-""
+let g:clang_format#command = 'clang-format'
+let g:clang_format#style_options = {
+            \ "BasedOnStyle": "Google",
+            \ "UseTab" : "Never",
+            \ "IndentWidth" : 4,
+            \ "ColumnLimit" : 100,
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AllowShortFunctionsOnASingleLine" : "false",
+            \}
 
 colorscheme default
